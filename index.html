@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <style>
+        #map {
+            width: 1128px;
+            height: 541px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/Mapaderiesgos_0.js"></script>
+        <script src="data/Mapadepeligros_1.js"></script>
+        <script src="data/Mapadevulnerabilidad_2.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[19.6323016647,-101.315063927],[19.7537704791,-101.061309038]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        var bounds_group = new L.featureGroup([]);
+        var basemap0 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            maxZoom: 28
+        });
+        basemap0.addTo(map);
+        function setBounds() {
+        }
+        function pop_Mapaderiesgos_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Mapaderiesgos_0_0(feature) {
+            switch(String(feature.properties['descri'])) {
+                case 'Muy bajo riesgo':
+                    return {
+                pane: 'pane_Mapaderiesgos_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.6)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(10,179,10,0.6)',
+            }
+                    break;
+                case 'Bajo riesgo':
+                    return {
+                pane: 'pane_Mapaderiesgos_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.6)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(238,234,1,0.6)',
+            }
+                    break;
+                case 'Riesgo medio':
+                    return {
+                pane: 'pane_Mapaderiesgos_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.6)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(242,107,28,0.6)',
+            }
+                    break;
+                case 'Riesgo alto':
+                    return {
+                pane: 'pane_Mapaderiesgos_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.6)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(246,21,5,0.6)',
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Mapaderiesgos_0');
+        map.getPane('pane_Mapaderiesgos_0').style.zIndex = 400;
+        map.getPane('pane_Mapaderiesgos_0').style['mix-blend-mode'] = 'normal';
+        var layer_Mapaderiesgos_0 = new L.geoJson(json_Mapaderiesgos_0, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Mapaderiesgos_0',
+            onEachFeature: pop_Mapaderiesgos_0,
+            style: style_Mapaderiesgos_0_0,
+        });
+        bounds_group.addLayer(layer_Mapaderiesgos_0);
+        map.addLayer(layer_Mapaderiesgos_0);
+        function pop_Mapadepeligros_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Mapadepeligros_1_0(feature) {
+            switch(String(feature.properties['descri'])) {
+                case 'Peligro alto':
+                    return {
+                pane: 'pane_Mapadepeligros_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.6)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(29,22,221,0.6)',
+            }
+                    break;
+                case 'Peligro bajo':
+                    return {
+                pane: 'pane_Mapadepeligros_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.6)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(47,178,229,0.6)',
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Mapadepeligros_1');
+        map.getPane('pane_Mapadepeligros_1').style.zIndex = 401;
+        map.getPane('pane_Mapadepeligros_1').style['mix-blend-mode'] = 'normal';
+        var layer_Mapadepeligros_1 = new L.geoJson(json_Mapadepeligros_1, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Mapadepeligros_1',
+            onEachFeature: pop_Mapadepeligros_1,
+            style: style_Mapadepeligros_1_0,
+        });
+        bounds_group.addLayer(layer_Mapadepeligros_1);
+        map.addLayer(layer_Mapadepeligros_1);
+        function pop_Mapadevulnerabilidad_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Mapadevulnerabilidad_2_0(feature) {
+            switch(String(feature.properties['descri'])) {
+                case 'Vulnerabilidad muy baja':
+                    return {
+                pane: 'pane_Mapadevulnerabilidad_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.6)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(245,255,245,0.6)',
+            }
+                    break;
+                case 'Vulnerabilidad baja':
+                    return {
+                pane: 'pane_Mapadevulnerabilidad_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.6)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(200,191,214,0.6)',
+            }
+                    break;
+                case 'Vulnerabilidad media-baja':
+                    return {
+                pane: 'pane_Mapadevulnerabilidad_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.6)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(155,128,182,0.6)',
+            }
+                    break;
+                case 'Vulnerabilidad media':
+                    return {
+                pane: 'pane_Mapadevulnerabilidad_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.6)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(110,64,151,0.6)',
+            }
+                    break;
+                case 'Vulnerabilidad alta':
+                    return {
+                pane: 'pane_Mapadevulnerabilidad_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.6)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(65,0,119,0.6)',
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Mapadevulnerabilidad_2');
+        map.getPane('pane_Mapadevulnerabilidad_2').style.zIndex = 402;
+        map.getPane('pane_Mapadevulnerabilidad_2').style['mix-blend-mode'] = 'normal';
+        var layer_Mapadevulnerabilidad_2 = new L.geoJson(json_Mapadevulnerabilidad_2, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Mapadevulnerabilidad_2',
+            onEachFeature: pop_Mapadevulnerabilidad_2,
+            style: style_Mapadevulnerabilidad_2_0,
+        });
+        bounds_group.addLayer(layer_Mapadevulnerabilidad_2);
+        map.addLayer(layer_Mapadevulnerabilidad_2);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'Mapa de vulnerabilidad<br /><table><tr><td style="text-align: center;"><img src="legend/Mapadevulnerabilidad_2_1Vulnerabilidadmuybaja0.png" /></td><td>1 - Vulnerabilidad muy baja</td></tr><tr><td style="text-align: center;"><img src="legend/Mapadevulnerabilidad_2_2Vulnerabilidadbaja1.png" /></td><td>2 - Vulnerabilidad baja</td></tr><tr><td style="text-align: center;"><img src="legend/Mapadevulnerabilidad_2_3Vulnerabilidadmediabaja2.png" /></td><td>3 - Vulnerabilidad media-baja</td></tr><tr><td style="text-align: center;"><img src="legend/Mapadevulnerabilidad_2_4Vulnerabilidadmedia3.png" /></td><td>4 - Vulnerabilidad media</td></tr><tr><td style="text-align: center;"><img src="legend/Mapadevulnerabilidad_2_5Vulnerabilidadalta4.png" /></td><td>5 - Vulnerabilidad alta</td></tr></table>': layer_Mapadevulnerabilidad_2,'Mapa de peligros<br /><table><tr><td style="text-align: center;"><img src="legend/Mapadepeligros_1_2Peligroalto0.png" /></td><td>2 - Peligro alto</td></tr><tr><td style="text-align: center;"><img src="legend/Mapadepeligros_1_1Peligrobajo1.png" /></td><td>1 - Peligro bajo</td></tr></table>': layer_Mapadepeligros_1,'Mapa de riesgos<br /><table><tr><td style="text-align: center;"><img src="legend/Mapaderiesgos_0_1Muybajoriesgo0.png" /></td><td>1 - Muy bajo riesgo</td></tr><tr><td style="text-align: center;"><img src="legend/Mapaderiesgos_0_2Bajoriesgo1.png" /></td><td>2 - Bajo riesgo</td></tr><tr><td style="text-align: center;"><img src="legend/Mapaderiesgos_0_3Riesgomedio2.png" /></td><td>3 - Riesgo medio</td></tr><tr><td style="text-align: center;"><img src="legend/Mapaderiesgos_0_4Riesgoalto3.png" /></td><td>4 - Riesgo alto</td></tr></table>': layer_Mapaderiesgos_0,},{collapsed:false}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
